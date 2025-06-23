@@ -5,7 +5,7 @@ export const ListeningPort = (app) => {
   app.listen(process.env.PORT || 5000, async () => {
     console.log(`Listening on port ${process.env.PORT}`);
 
-    DB.connect((err) => {
+    DB.getConnection((err) => {
       if (!err) {
         console.log("Connected to DB successfully");
       } else {
