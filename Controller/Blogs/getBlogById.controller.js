@@ -35,7 +35,7 @@ export const GetBlogsByCategory = async (req, res, next) => {
   }
 
   try {
-    if (blog_category === "all") {
+    if (value.blog_category === "all") {
       const query = "SELECT * FROM blog";
       let [result] = await DB.promise().query(query);
       return res.status(200).json({
