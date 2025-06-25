@@ -6,7 +6,7 @@ import { ListeningPort } from "./Utils/ListenningPort.js";
 import errorHandler from "./middleware/error.middleware.js";
 import createBlogRouter from "./Router/Blogs/CreateBlog.Router.js";
 import getBlogsRouter from "./Router/Blogs/GetBlogs.Router.js";
-import GetBlogByIdRouter from "./Router/Blogs/GetBlogByID.js";
+import GetBlogByIdRouter from "./Router/Blogs/GetBlogByID.Router.js";
 const app = express();
 //Middelware
 app.use(cors());
