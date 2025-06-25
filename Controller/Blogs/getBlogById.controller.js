@@ -6,8 +6,8 @@ const BlogIdObject = Joi.object({
 });
 
 export const GetBlogByID = async (req, res, next) => {
-  const { value: blog_id, error } = BlogIdObject.validate(req.params);
-  if (!blog_id) {
+  const { value, error } = BlogIdObject.validate(req.params);
+  if (!value.blog_id) {
     res.status(404).json({
       statusbar: "error",
       message: error,
@@ -16,7 +16,7 @@ export const GetBlogByID = async (req, res, next) => {
 
   try {
     const Query = "SELECT * FROM blog WHERE id = ?";
-    const Value = [blog_id];
+    const Value = [value.blog_id];
 
     const [result] = await DB.promise().query(Query, Value);
 
