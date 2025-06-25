@@ -35,13 +35,21 @@ export const GetBlogsByCategory = async (req, res, next) => {
   }
 
   try {
-    const query = "SELECT * FROM blog WHERE category = ?";
-    const [result] = await DB.promise().query(query, [value.blog_category]);
-
-    res.status(200).json({
-      statusbar: "success",
-      result,
-    });
+    if (blog_category === "all") {
+      const query = "SELECT * FROM blog";
+      let [result] = await DB.promise().query(query);
+      return res.status(200).json({
+        statusbar: "success",
+        result,
+      });
+    } else {
+      const query = "SELECT * FROM blog WHERE category = ?";
+      let [result] = await DB.promise().query(query, [value.blog_category]);
+      return res.status(200).json({
+        statusbar: "success",
+        result,
+      });
+    }
   } catch (err) {
     next(err);
   }
