@@ -6,6 +6,7 @@ import { ListeningPort } from "./Utils/ListenningPort.js";
 import errorHandler from "./middleware/error.middleware.js";
 import createBlogRouter from "./Router/Blogs/CreateBlog.Router.js";
 import getBlogsRouter from "./Router/Blogs/GetBlogs.Router.js";
+import GetBlogByIdRouter from "./Router/Blogs/GetBlogByID.js";
 const app = express();
 //Middelware
 app.use(cors());
@@ -15,6 +16,7 @@ dotenv.config({ path: "./.env" });
 //Endpoints
 app.use("/create-blog", createBlogRouter);
 app.use("/get-blogs", getBlogsRouter);
+app.use("/get-blogs-by-id", GetBlogByIdRouter);
 
 app.use(errorHandler);
 
